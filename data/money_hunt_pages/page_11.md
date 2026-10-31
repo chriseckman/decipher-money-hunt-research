@@ -9,3 +9,7 @@ The image-based notes are in [the state analysis](../../docs/money-hunt-state-an
 Scans: [Karen Puzzles' Money Hunt folder](https://drive.google.com/drive/folders/1LgZD4G5UtxEaaQxZ0G3PL6Zj_DDDD3W3?usp=sharing).
 
 The crossword clue list 38–69 was left out, including clue 55, "Belonging to the Potato State".
+
+**Update 2026-10-31:** the DOWN clue list 38–69 is now transcribed (double-pass
+verified: full page + 3× crop) in [../money_hunt_down_clues.md](../money_hunt_down_clues.md).
+The scene art remains withdrawn pending a full re-read.

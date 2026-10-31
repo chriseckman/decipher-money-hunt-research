@@ -491,3 +491,63 @@ and Pasternak have no text in the corpus, so they remain unscreened at anchor gr
 Residual interpretations of '10 / End' not covered here: hotline-message numbering
 (clue recordings lost) and print-edition-only anchors (OCR edition differences).
 Output `results/anchor_sweep_2026-10-31.txt`.
+
+## 2026-10-31 (later) — full sliding-origin sweep of the 4 era-verified physical scans: all negative
+
+**Correction to the anchor-sweep entry above and to
+`money-hunt-work/llm-handoff-cipher-next-steps.md`:** the claim that "Group B's Poe
+and Pasternak have no text in the corpus" is wrong. Poe is at `texts/poe/` (9 whole
+works) and Pasternak at `texts/doctor-zhivago/` (17 parts + front matter, Signet
+First Printing Feb 1960, era-verified from the copyright-page scan). Neither is an
+open acquisition.
+
+**Why anchor_sweep was NOT extended to them:** `engine.last_letters()` is
+last-letter-of-each-word, i.e. identical to anchor_sweep's `wl-split` stream, and
+`first_letters()` is `wf-split`. Poe was already swept in campaigns 1-2 under all 21
+rule families with the numbering origin slid across the whole book (~5M positions,
+best -8.84). A fixed structural anchor is a strict *subset* of a sliding origin, so
+an anchor run over `texts/poe` or `texts/pd` adds no coverage. The real gap was the
+reverse one.
+
+**The actual gap:** `body_scan.py` tests contiguous windows of <=6 chapters;
+`sweep.py` slides the origin across the entire book. The five CZUR scans had only
+ever been through `body_scan.py`, because `sweep.py` needs whole-book text and the
+scans are stored one file per chapter. New tool `solver/build_whole_books.py`
+concatenates `texts/<book>/ch*.txt` in natural-sort (reading) order into
+`texts/wholebooks/`, then `normalize_text.py --chapters` makes them sweep-ready and
+enables the chapter-title-chain rule.
+
+**Gap detection is load-bearing:** `cats-cradle` was excluded as NOT SWEEP-ABLE -
+only 46 of 127 micro-chapters were scanned (the targeted ch10-15 window), so
+whole-book word numbering would be invalid past the first gap. Sweeping it would
+have produced a meaningless negative. `foundation_new`, `foundation_v1_2026-10-21`
+and `the-thorn-birds-old-2026-10-24` were skipped as superseded.
+
+| Book (words) | 3-1 | 2-4 | 3-2 | 3-3 |
+|---|---|---|---|---|
+| doctor-zhivago (210,857) | -8.9155 | -8.7425 | **-8.5048** | -8.7935 |
+| foundation2 (79,303) | -9.0193 | -8.9522 | -8.6936 | -8.8716 |
+| i-robot (71,590) | -9.0252 | -8.9094 | -8.6663 | -8.7983 |
+| the-thorn-birds (250,331) | -8.8842 | -8.5396 | -8.5141 | -8.5145 |
+
+**Result: no readable plaintext in any of the 16 book x cipher combinations.**
+Global best `score` is -8.5048 (Zhivago / 3-2 / last-letters / start 48736
+from-end rev); the look threshold is -8.2 and genuine English is -7.9..-8.0. Every
+preview is vowel-salad. The four highest `win` values (-8.0667 i-robot 3-2,
+-8.2015 Thorn Birds 2-4, -8.2463 foundation2 2-4, -8.2482 Thorn Birds 3-3) sit at
+the documented ~-8.1 `win` noise floor and are all on the `*-wordlast` /
+`last-letters` families that campaign 2 already identified as letter-density
+artifacts, not English. `foundation2.chapters.json` yields a 35-letter title chain -
+far too short for any cipher (min max-index 416), so no chain test was meaningful.
+
+**Grade of these negatives.** Stronger than anything previously recorded for these
+four texts (full sliding origin x 21 families x 4 direction combos, on era-verified
+editions, vs. windowed body_scan only). But still not hard eliminations: OCR noise
+persists (Zhivago's inner margins are tight and its poems italic - the reason
+RUN_LOG grades it "strong negative" rather than "eliminated"), and the standing rule
+applies that a miss on a printing that is not the one Decipher used proves nothing.
+Foundation and I, Robot were already hard-eliminated for 3-1 independently, by the
+zero-Z necessary condition (51/51 and 111/153 windows fail); this run adds coverage
+for 2-4/3-2/3-3 on those two.
+
+Runtime ~572 s for all 16 combinations. Output `results/wholebook_sweep_2026-10-31.txt`.
