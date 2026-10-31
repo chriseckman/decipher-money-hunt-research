@@ -13,10 +13,20 @@ cheap falsification test runs first and can stop the spend.
 
 ## 0. Before you pay: two checks that can make the purchase unnecessary
 
-1. **Library route first.** Many public libraries include *Newspapers.com Library
-   Edition* with a card, often a broader product than the consumer tier. Same queries,
-   zero cost. Check your library's Databases/A–Z list for "Newspapers.com" before
-   buying. (`docs/sources.md` lists this as the cheapest path.)
+1. **Library route first — but verify the package, it is a different product.**
+   *Newspapers.com Library Edition* is distributed by **ProQuest**, not by
+   Newspapers.com: 4,000+ titles, licensed to libraries in **packages** (World
+   Collection, multi-state, or state-level e.g. "Texas Edition"). Two consequences:
+   - Coverage depends on which package *your* library bought. Confirm it includes
+     Virginia, Texas, Oregon, Tennessee and Wisconsin before relying on it (§1 lists
+     the five papers we need).
+   - You log in through the **library's database portal**, not a Newspapers.com
+     account, so the search interface and clipping tools differ from the consumer site.
+   - Whether Library Edition includes **Publisher Extra** titles is unconfirmed — and
+     the one concrete lead we hold (§0.2) *is* a Publisher Extra page. The free route
+     may not reach it.
+   Still zero cost, so check your library's A–Z database list first; just don't assume
+   it substitutes for a consumer trial. (`docs/sources.md` lists it as the cheapest path.)
 2. **Tier check.** The one concrete live lead — `newspapers.com/newspage/640735315`
    (Fort Worth Star-Telegram, Sun 1988-04-24, p. 523) — is a **Publisher Extra** page,
    the paid add-on tier. Open that exact URL while logged in on a trial and confirm it
@@ -25,35 +35,55 @@ cheap falsification test runs first and can stop the spend.
 
 ## 1. The calibration test (run FIRST, ~30–45 min) — the stop/go gate
 
-These eight items are **known to exist** (cited in Baldwin & Sherman 1990 p. 283, or
-held as scans in Karen's Drive archive). They are the ground truth for whether this
-archive's coverage and OCR can find Decipher content at all.
+These items are **known to exist** (cited in Baldwin & Sherman 1990 p. 283, or held as
+scans in Karen's Drive archive). They are the ground truth for whether this archive can
+find Decipher content at all. Holdings verified on newspapers.com 2026-10-31:
 
-| # | Paper | Date | Page | What |
-|---|---|---|---|---|
-| 1 | Virginian-Pilot | 1985-04-17 | D6 | "Puzzle players decipher cryptogram" (Bryant) |
-| 2 | Boston Globe | 1985-04-04 | 1 | Decipher I winners (Dolnick) |
-| 3 | Boston Globe | 1985-04-04 | 15 | continuation |
-| 4 | The Tech (MIT) | 1983-09-27 | — | Kaliski |
-| 5 | The Tech (MIT) | 1985-04-05 | — | Kilian |
-| 6 | Statesman Journal (Salem OR) | 1986-03-25 | 1–2 | "Decipher II game pays off in cold cash" (Forstrom) — 2-1 Novak |
-| 7 | Milwaukee Sentinel | c. 1986-11 | — | "She cracks code to win $25,000" (Collins) — 2-3 Brown |
-| 8 | The Leaf-Chronicle (Clarksville TN) | 1986-09-27 | — | AP wire, 2-2 Chirpich |
+| # | Paper | newspapers.com | Coverage | Date | What |
+|---|---|---|---|---|---|
+| 1 | Virginian-Pilot (Norfolk VA) | id **30397** | 1899–2026, 686,051 pp | 1985-04-17 p.D6 | "Puzzle players decipher cryptogram" (Bryant) |
+| 2 | Statesman Journal (Salem OR) | id **3746** | 1869–2026, 1,536,608 pp | 1986-03-25 pp.1–2 | "Decipher II game pays off in cold cash" (Forstrom) — 2-1 Novak |
+| 3 | The Leaf-Chronicle (Clarksville TN) | id **3763** | 1884–2026, 1,158,079 pp | 1986-09-27 | AP wire, 2-2 Chirpich |
+| 4 | Milwaukee Sentinel / Milwaukee Journal Sentinel | ids **41738** / **43101** | 43101: 1844–2026, 479,581 pp | c. 1986-11 | "She cracks code to win $25,000" (Collins) — 2-3 Brown |
+| 5 | Fort Worth Star-Telegram | id **3455** | 1902–2026, ~9.08M pp | 1988-04-24 p.523 | the §0.2 tier check — also a real Decipher ad |
+| 6 | Boston Globe | not verified | likely Publisher Extra | 1985-04-04 pp.1, 15 | Decipher I winners (Dolnick) |
 
-Search each by paper + date + a distinctive phrase from the title (OCR will mangle
-"Decipher"; also try `Decip*`, `Decipher puzzle`, and the winner surnames Novak /
-Chirpich / Brown).
+**Dropped from this gate:** the two *The Tech* (MIT) items — Kaliski 1983-09-27 and
+Kilian 1985-04-05. A college paper, it is not a newspapers.com title; its own archive
+(`tech.mit.edu/archives`) is login-gated per `docs/sources.md`. Keep it as a separate
+free lead (ask MIT libraries), not as calibration.
 
-**Decision rule:**
-- **< 2 of 8 found** → the archive's coverage/OCR cannot see this niche. **Stop. Do not
-  renew.** The clue columns would be invisible here too.
-- **2–3 found** → partial. Proceed only with the paper-scoped queries (§3 group A),
-  which target papers the archive demonstrably holds.
-- **≥ 4 found** → index is good. Run the full query list (§3).
+**Run each item two ways**, because they test different things:
+- **(a) Full-text search**, scoped to the paper + year, using a distinctive title
+  phrase. OCR mangles "Decipher": also try `Decip*`, `Decipher puzzle`, and the winner
+  surnames Novak / Chirpich / Brown / Forstrom.
+- **(b) Date-browse** to the known issue and flip to the known page. Publisher
+  subdomains expose per-date article listings — e.g.
+  `statesmanjournal.newspapers.com/paper/statesman-journal/3746/articles/1985-05-30/`.
+  This is deterministic and does not depend on OCR quality.
 
-Note the Virginian-Pilot is newspapers.com paper **30397** and is Holland's hometown
-paper — the single most likely home of a recurring monthly column. Item 1 doubles as
-the coverage check for it.
+**Decision rule** — the distinction matters, because hunting clue columns requires
+full-text search (we don't know their dates or papers):
+- **(a) finds ≥ 4** → the OCR index is good. Run the full query list (§3).
+- **(a) finds 2–3** → partial. Run only §3 group A (paper-scoped), where the archive
+  demonstrably holds the paper.
+- **(a) finds ≤ 1 but (b) confirms the pages exist** → the pages are there and the
+  *search* cannot see them. Clue columns would be invisible to queries too. **Do not
+  renew.** Fallback only: date-browse the Virginian-Pilot through 1987–1991 looking for
+  a recurring Decipher column — slow, but the single paper most likely to have carried it.
+- **(b) also fails** → the paper/date is misattributed in the bibliography, or not
+  digitised. Record which, and stop.
+
+Note the Virginian-Pilot (item 1) is Holland's hometown paper — the single most likely
+home of a recurring monthly column, which is why it anchors group A.
+
+**Prior, revised down 2026-10-31:** a general web search across ~15 query variants
+("monthly clue column", author names eliminated, `627-GOLD`, Youth Beat, etc.) surfaced
+**no trace of any Decipher newspaper clue column** anywhere — only this repo, Wikipedia,
+Reddit, Puzzling SE and the Cryptologia paper. That is weak evidence against the column
+having run widely (a recurring syndicated column usually leaves a genealogy-board
+footprint), though archive OCR text is not web-crawled, so the test still stands. Treat
+§1's calibration gate as the real decider, not the web.
 
 ## 2. Triage rules (pre-commit to these; hit counts will lie to you)
 
