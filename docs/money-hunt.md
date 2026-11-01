@@ -180,3 +180,8 @@ consolidated state of every open thread as of 2026-10-30.
   clipping confirms Decipher III monthly clues were delivered **by hotline**
   ((800) 654-3939), not newspapers; no winner retrospective was ever found in
   newspapers. Details in `docs/newspapers-com-sweep-2026-10-31.md`.
+- Post-deadline sweep (same day): Alabama Journal 1988-04-12 p.1, Orange Leader
+  1988-06-06 p.5, Huntsville Times 1988-06-11 p.2 all opened and cleared as false
+  positives (Gov. Guy Hunt budget copy, consumer-advice page, TV listing). No
+  winner-announcement coverage found anywhere in the 1986–1989 trial hits; the
+  prize's 1988-03-31 expiry passed without newspaper notice.
