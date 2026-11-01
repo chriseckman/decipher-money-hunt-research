@@ -152,3 +152,31 @@ consolidated state of every open thread as of 2026-10-30.
   incomplete information, no amount of analysis yields a unique answer. The 1945 crash
   theme and the ESB acrostic are the strongest structural leads; the per-page states
   are the strongest mechanical ones; they have not yet been reconciled.
+
+## Newspaper findings (2026-11-01, newspapers.com trial)
+
+- **The Herald-Times (Bloomington, Indiana), 1986-11-27, p.47** — full editorial
+  article "Game offers player chance at $1 million" (Linda Delroy Weger, H-T Staff
+  Writer). Key facts: Money Hunt was marketed by **T&L Games Inc. of Bloomington,
+  Indiana** (VP Roger Dean); $19.95 in the Sears catalog; the $1M prize was held in a
+  **trust fund** and structured as **20 yearly installments of $50,000**; players got
+  **three chances** to guess the treasure location; answer forms went to an address
+  in **Washington** by **March 31, 1988**; **Touche Ross & Co.** was the escrow
+  agent holding registrations, correspondence and "the keys to the prize money";
+  ties split the award among exactly-matching entries. Development attributed to
+  "Canadian John Power" (repo holds the creator as **John Poser** — likely a
+  newspaper misprint) and his two sons, **Shawn (18) and Matt (10)**, over two
+  years; the family had previously made Junior Trivia.
+- **Chicago Tribune, 1986-11-28, p.128** — gift-guide capsule: "The Money Hunt, T&L
+  Games Inc., $20... An audience-participation game. First person to solve [the
+  puzzle] wins a real million dollars."
+- Los Angeles Herald Examiner 1988-04-28 p.12 was checked for post-deadline winner
+  coverage and is a false positive (tax-page copy).
+- Unopened leads: Alabama Journal 1988-04-12 p.1 (7 matches, around the answer
+  deadline — best remaining candidate for winner/outcome coverage), The Orange
+  Leader 1988-06-06 p.5, The Huntsville Times 1988-06-11 p.2, Alabama Journal
+  1988-11-11 p.1.
+- Decipher cipher newspaper hunt closed on the same day: the 1990 Palm Beach Post
+  clipping confirms Decipher III monthly clues were delivered **by hotline**
+  ((800) 654-3939), not newspapers; no winner retrospective was ever found in
+  newspapers. Details in `docs/newspapers-com-sweep-2026-10-31.md`.
